@@ -7,11 +7,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Id;
 
-/*
--Como a base de dados será em MongoDB
--Esta classe será definida como um documento, pois o MongoDB é NoSql,
-ou seja, é baseada em documentos
+/**
+* Esta classe é utilizado para fazer associação com uma coleção do MongoDB
+* @param id id do usuário
+* @param nick apelido do usuário
+* @param nome nome do usuário
+* @param email email do usuário
+* @param password senha do usuário
+* @param bio biliografia/apresentação do usuário
+* @param imgUrlPerfil lista de imagens para ser exibida no perfil
 */
+
 @Document(collection = "user")
 public class User implements Serializable{
 
@@ -93,6 +99,11 @@ public class User implements Serializable{
         return imgUrlPerfil;
     }
 
+    /**
+     * Método para definir as imagens para perfil
+     * @param imgUrlPerfil parametro para definir a lista de imagens
+     * @return N/A
+     */
     public void setImgUrlPerfil(List<String> imgUrlPerfil) {
         this.imgUrlPerfil = imgUrlPerfil;
     }
@@ -122,6 +133,10 @@ public class User implements Serializable{
         return true;
     }
 
+    /**
+     * Retorna os valores atuais das variaveis desta classe
+     * @return string contento os valores de todas as variaveis
+     */
     @Override
     public String toString() {
         return "User [id=" + id + ", nick=" + nick + ", nome=" + nome + ", email=" + email + ", password=" + password
